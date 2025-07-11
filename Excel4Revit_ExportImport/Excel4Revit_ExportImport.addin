@@ -1,0 +1,11 @@
+﻿<RevitAddIns>
+    <AddIn Type="Application">
+        <Name>Excel4Revit_ExportImport</Name>
+        <Assembly>Excel4Revit_ExportImport/Excel4Revit_ExportImport.dll</Assembly>
+        <AddInId>FBDA7BE1-5DF2-425F-B62A-AD6AB9E005D9</AddInId>
+        <FullClassName>Excel4Revit_ExportImport.Application</FullClassName>
+        <VendorId>Development</VendorId>
+        <VendorDescription></VendorDescription>
+        <VendorEmail></VendorEmail>
+    </AddIn>
+</RevitAddIns>

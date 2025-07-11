@@ -1,0 +1,5 @@
+{
+  "$schema": "./build.schema.json",
+  "Solution": "Excel4Revit_ExportImport.sln",
+  "Verbosity": "Normal"
+}
