@@ -69,4 +69,41 @@ public static class ParametersExstension
 
         return result;
     }
+
+    public static void SetParametersByName(this Element element, List<string> parameterNames, List<string> parameterValues)
+    {
+        for (int i = 0; i < parameterNames.Count; i++)
+        {
+            var parameterName = parameterNames[i];
+            var parameterValue = i < parameterValues.Count ? parameterValues[i] : null;
+            SetParameterByName(element, parameterName, parameterValue);
+        }
+    }
+
+    private static bool SetParameterByName(Element element, string parameterName, string parameterValue)
+    {
+        if (string.IsNullOrEmpty(parameterName) || string.IsNullOrEmpty(parameterValue))
+            return false;
+        Parameter parameter = element.FindParameter(parameterName);
+        if (parameter == null)
+            return false;
+        switch (parameter.StorageType)
+        {
+            case StorageType.String:
+                return parameter.Set(parameterValue);
+            case StorageType.Double:
+                if (double.TryParse(parameterValue, out double doubleValue))
+                    return parameter.Set(doubleValue);
+                break;
+            case StorageType.Integer:
+                if (int.TryParse(parameterValue, out int intValue))
+                    return parameter.Set(intValue);
+                break;
+            case StorageType.ElementId:
+                if (int.TryParse(parameterValue, out int elementIdValue))
+                    return parameter.Set(new ElementId(elementIdValue));
+                break;
+        }
+        return false;
+    }
 }
