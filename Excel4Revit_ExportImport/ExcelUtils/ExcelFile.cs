@@ -147,6 +147,9 @@ public static class ExcelFile
                             parameterValues.Add(string.Empty);
                     }
 
+                    if (R != double.NaN)
+                        element.RotateTo(R);
+
                     element.SetParametersByName(parameterNames, parameterValues);
                 }
             }
